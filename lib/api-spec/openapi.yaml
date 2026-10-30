@@ -1,0 +1,125 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: tires
+    description: Catalog operations
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /tires:
+    get:
+      operationId: listTires
+      tags: [tires]
+      summary: List truck tires
+      description: Returns parsed catalog data from the configured demo or public donor source.
+      responses:
+        "200":
+          description: Tire catalog
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TireCatalog"
+        "502":
+          description: Donor source is unavailable or could not be parsed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    Tire:
+      type: object
+      properties:
+        id:
+          type: string
+        brand:
+          type: string
+        model:
+          type: string
+        country:
+          type: string
+        size:
+          type: string
+        width:
+          type: string
+        profile:
+          type: string
+        diameter:
+          type: string
+        axle:
+          type: string
+          enum: [рулевая, ведущая, прицепная]
+        speed:
+          type: string
+        load:
+          type: string
+        price:
+          type: number
+          minimum: 0
+        availability:
+          type: string
+        imageUrl:
+          type: ["string", "null"]
+      required:
+        - id
+        - brand
+        - model
+        - country
+        - size
+        - width
+        - profile
+        - diameter
+        - axle
+        - speed
+        - load
+        - price
+        - availability
+        - imageUrl
+    TireCatalog:
+      type: object
+      properties:
+        source:
+          type: string
+          enum: [demo, donor]
+        fetchedAt:
+          type: string
+          format: date-time
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/Tire"
+      required: [source, fetchedAt, products]
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+      required: [error]
+

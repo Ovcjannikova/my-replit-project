@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "ШинывНН"
+description = "Русскоязычный сайт-магазин грузовых шин с поиском по размеру, фильтрами каталога, демонстрационными товарами и формой запроса цены."
+version = "1.0.0"
+id = "artifacts/shiny-vnn"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25154
+
+[services.development]
+run = "pnpm --filter @workspace/shiny-vnn run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/shiny-vnn", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/shiny-vnn/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25154"
+BASE_PATH = "/"
