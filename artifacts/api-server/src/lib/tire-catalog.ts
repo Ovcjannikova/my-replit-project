@@ -37,56 +37,43 @@ const SELECTORS = {
 } as const;
 
 const DEMO_DONOR_HTML = `
-  <main>
-    <article data-tire data-id="demo-hankook-ah35">
-      <span data-brand="Hankook"></span><span data-model="SmartFlex AH35"></span>
-      <span data-country="Южная Корея"></span><span data-size="315/70 R22.5"></span>
-      <span data-width="315 мм"></span><span data-profile="70%"></span>
-      <span data-diameter="22.5″"></span><span data-axle="рулевая"></span>
-      <span data-speed="K"></span><span data-load="154/150"></span>
-      <span data-price="28900"></span><span data-availability="Демонстрация: в наличии"></span>
-    </article>
-    <article data-tire data-id="demo-michelin-xmulti">
-      <span data-brand="Michelin"></span><span data-model="X Multi D"></span>
-      <span data-country="Франция"></span><span data-size="315/70 R22.5"></span>
-      <span data-width="315 мм"></span><span data-profile="70%"></span>
-      <span data-diameter="22.5″"></span><span data-axle="ведущая"></span>
-      <span data-speed="L"></span><span data-load="154/150"></span>
-      <span data-price="36500"></span><span data-availability="Демонстрация: доступна"></span>
-    </article>
-    <article data-tire data-id="demo-sailun-s917">
-      <span data-brand="Sailun"></span><span data-model="S917"></span>
-      <span data-country="Китай"></span><span data-size="315/70 R22.5"></span>
-      <span data-width="315 мм"></span><span data-profile="70%"></span>
-      <span data-diameter="22.5″"></span><span data-axle="прицепная"></span>
-      <span data-speed="M"></span><span data-load="154/150"></span>
-      <span data-price="22700"></span><span data-availability="Демонстрация: в наличии"></span>
-    </article>
-    <article data-tire data-id="demo-cordiant-tr1">
-      <span data-brand="Cordiant"></span><span data-model="Professional TR-1"></span>
-      <span data-country="Россия"></span><span data-size="385/65 R22.5"></span>
-      <span data-width="385 мм"></span><span data-profile="65%"></span>
-      <span data-diameter="22.5″"></span><span data-axle="прицепная"></span>
-      <span data-speed="K"></span><span data-load="160"></span>
-      <span data-price="29800"></span><span data-availability="Демонстрация: доступна"></span>
-    </article>
-    <article data-tire data-id="demo-kama-nf202">
-      <span data-brand="Кама"></span><span data-model="NF 202"></span>
-      <span data-country="Россия"></span><span data-size="315/80 R22.5"></span>
-      <span data-width="315 мм"></span><span data-profile="80%"></span>
-      <span data-diameter="22.5″"></span><span data-axle="рулевая"></span>
-      <span data-speed="M"></span><span data-load="156/150"></span>
-      <span data-price="24900"></span><span data-availability="Демонстрация: в наличии"></span>
-    </article>
-    <article data-tire data-id="demo-triangle-trd06">
-      <span data-brand="Triangle"></span><span data-model="TRD06"></span>
-      <span data-country="Китай"></span><span data-size="315/80 R22.5"></span>
-      <span data-width="315 мм"></span><span data-profile="80%"></span>
-      <span data-diameter="22.5″"></span><span data-axle="ведущая"></span>
-      <span data-speed="L"></span><span data-load="156/150"></span>
-      <span data-price="26400"></span><span data-availability="Демонстрация: доступна"></span>
-    </article>
-  </main>
+<main>
+  <article data-tire data-id="ovation-vi-702">
+    <span data-brand="OVATION"></span><span data-model="VI-702"></span>
+    <span data-country="Импортная"></span><span data-size="7.50R16"></span>
+    <span data-width="7.50 MM"></span><span data-profile="0%"></span>
+    <span data-diameter="16""></span><span data-axle="Универсальная"></span>
+    <span data-speed="M"></span><span data-load="122/118"></span>
+    <span data-price="10657"></span><span data-availability="В наличии"></span>
+  </article>
+
+  <article data-tire data-id="ovation-vi-660-215">
+    <span data-brand="OVATION"></span><span data-model="VI-660"></span>
+    <span data-country="Импортная"></span><span data-size="215/75R17.5"></span>
+    <span data-width="215 MM"></span><span data-profile="75%"></span>
+    <span data-diameter="17.5""></span><span data-axle="Рулевая/Прицепная"></span>
+    <span data-speed="J"></span><span data-load="135/133"></span>
+    <span data-price="11101"></span><span data-availability="В наличии"></span>
+  </article>
+
+  <article data-tire data-id="ovation-vi-660-315">
+    <span data-brand="OVATION"></span><span data-model="VI-660"></span>
+    <span data-country="Импортная"></span><span data-size="315/70R22.5"></span>
+    <span data-width="315 MM"></span><span data-profile="70%"></span>
+    <span data-diameter="22.5""></span><span data-axle="Рулевая"></span>
+    <span data-speed="L/M"></span><span data-load="154/150"></span>
+    <span data-price="21313"></span><span data-availability="В наличии"></span>
+  </article>
+
+  <article data-tire data-id="ovation-vi-638">
+    <span data-brand="OVATION"></span><span data-model="VI-638"></span>
+    <span data-country="Импортная"></span><span data-size="11R22.5"></span>
+    <span data-width="11 MM"></span><span data-profile="0%"></span>
+    <span data-diameter="22.5""></span><span data-axle="Ведущая"></span>
+    <span data-speed="M"></span><span data-load="148/145"></span>
+    <span data-price="23144"></span><span data-availability="В наличии"></span>
+  </article>
+</main>
 `;
 
 let cachedCatalog: { value: TireCatalog; expiresAt: number } | undefined;
